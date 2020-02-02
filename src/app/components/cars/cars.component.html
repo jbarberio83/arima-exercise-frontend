@@ -1,0 +1,30 @@
+<div *ngIf="cars.length === 0" class="alert alert-danger animated fadeIn text-center">
+    No existen coches en el periodo de fechas que has elegido
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">date</th>
+        <th scope="col">brand</th>
+        <th scope="col">model</th>
+        <th scope="col">price</th>
+        <th scope="col">color</th>
+        <th scope="col">km</th>
+        <th scope="col">vin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars; let i = index">
+        <th scope="row"></th>
+        <td>{{ car.date | date: 'dd/MM/yyyy'}}</td>
+        <td>{{ car.brand }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.price }}€</td>
+        <td>{{ car.color }}</td>
+        <td>{{ car.km }}km</td>
+        <td>{{ car.vin }}</td>
+      </tr>
+    </tbody>
+  </table>

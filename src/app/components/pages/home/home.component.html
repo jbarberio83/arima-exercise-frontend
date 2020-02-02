@@ -1,0 +1,38 @@
+<div class="card m-3">
+    <h5 class="card-header"></h5>
+    <div class="card-body">
+        <form [formGroup]="filterForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="form-row text">
+                <div class="form-group col-6">
+                    <label>Fecha inicio</label>
+                    <input type="text" formControlName="sDate" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && filterForm.controls.sDate.errors }" placeholder="DD/MM/YYYY" />
+                    <div *ngIf="submitted && filterForm.controls.sDate.errors" class="invalid-feedback">
+                        <div *ngIf="filterForm.controls.sDate.errors.required">Campo obligatorio</div>
+                        <div *ngIf="filterForm.controls.sDate.errors.invalidDate">Formato inválido (DD/MM/YYYY)</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Fecha fin</label>
+                    <input type="text" formControlName="eDate" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && filterForm.controls.eDate.errors }" placeholder="DD/MM/YYYY" />
+                    <div *ngIf="submitted && filterForm.controls.eDate.errors" class="invalid-feedback">
+                        <div *ngIf="filterForm.controls.eDate.errors.required">Campo obligatorio</div>
+                        <div *ngIf="filterForm.controls.eDate.errors.invalidDate">Formato inválido (DD/MM/YYYY)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div *ngIf="submitted && filterForm.errors && filterForm.errors.dateGreater" class="alert alert-danger" role="alert">
+                    La fecha inicio tiene que ser menor que la fecha fin
+                  </div>
+                <button class="btn btn-primary mr-1">Filter</button>
+                <a href="#" (click)="reset()" class="btn btn-secondary">Clear</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-cars *ngIf="isLoaded && cars.length > 0" [cars]="cars"></app-cars>
+<app-pagination *ngIf="isLoaded && cars.length > 0" (pageEmitter)="goPage($event)" [pager]="pager"></app-pagination>
