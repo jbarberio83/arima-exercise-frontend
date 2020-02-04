@@ -12,9 +12,7 @@ import { CustomValidators } from './_helpers/custom-forms.validator';
 export class HomeComponent implements OnInit {
   filterForm: FormGroup;
   submitted: boolean = false;
-
   cars: Car[];
-
   pager: Pager = new Pager(1);
   sDate: string;
   eDate: string;
