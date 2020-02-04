@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.getCarsByPage();
   }
 
-  getCarsByPage(): void {
+  getCarsByPage() {
     this.carService.getCars(this.pager.currentPage, this.sDate, this.eDate)
       .subscribe(response => {
         this.isLoaded = true;
