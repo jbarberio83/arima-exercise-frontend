@@ -3,7 +3,7 @@ export class Car {
     make: string;
     model: string;
     price: number;
-    date: date;
+    date: Date;
     color: string;
     description: string;
     vin: string;
